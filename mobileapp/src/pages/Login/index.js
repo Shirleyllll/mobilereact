@@ -1,10 +1,17 @@
 import React from 'react';
 import Icon from '@/component/Icon'
+import styles from './index.module.scss'
 const Login = () => {
     return (
-        <div>
-            我是login
-            <Icon type="iconfanhui" style={{fontSize: 100}} onClick={() => alert('哈哈哈')}/>
+        <div className={styles.root}>
+            {/* 后退按钮 */}
+            <div className="left">
+                <Icon type="iconfanhui"></Icon>
+            </div>
+
+            <div className="title">我是标题</div>
+            <div className="right">右侧内容</div>
+
         </div>
     );
 }
