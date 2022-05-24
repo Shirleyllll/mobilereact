@@ -1,6 +1,10 @@
 import NavBar from '@/component/NavBar'
 import styles from './index.module.scss'
+import Input from '@/component/Input'
 const Login = () => {
+    const onExtraClick = () => {
+        console.log(111)
+    }
     return (
         <div className={styles.root}>
             {/* 导航条 */}
@@ -10,12 +14,12 @@ const Login = () => {
                 <h3>短信登录</h3>
                 <form>
                     <div className="input-item">
-                        <input type="text" />
-                        <div className="validate">手机号验证错误信息</div>
+                        <Input placeholder="请输入手机号"></Input>
+                        {/* <div className="validate">手机号验证错误信息</div> */}
                     </div>
                     <div className="input-item">
-                        <input type="text" />
-                        <div className="validate">验证码验证错误信息</div>
+                        <Input placeholder="请输入验证码" extra="获取验证码" onExtraClick={onExtraClick}></Input>
+                        {/* <div className="validate">验证码验证错误信息</div> */}
                     </div>
                     <button className="login-btn">
                         登录
