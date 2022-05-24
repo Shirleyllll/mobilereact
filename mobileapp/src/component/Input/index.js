@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './index.module.scss'
-export default function Input({extra, onExtraClick, ...rest}) {
+import classNames from 'classnames'
+export default function Input({extra, onExtraClick, className,...rest}) {
   return (
     <div className={styles.root}>
-        <input className='input' {...rest}/>
+        <input className={classNames('input', className)} {...rest}/>
         {
-          extra && <div className='extra' onClick={onExtraClick}>{extra}</div>
+          extra ? <div className='extra' onClick={onExtraClick}>{extra}</div> : null
         }
     </div>
   )
