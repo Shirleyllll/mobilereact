@@ -5,7 +5,7 @@ import Input from '@/component/Input'
 import * as Yup from 'yup'
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import { sendCode } from '@/store/actions/login';
+import { login, sendCode } from '@/store/actions/login';
 import { Toast } from 'antd-mobile';
 import { useState } from 'react';
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
             await dispatch(sendCode(mobile))
             Toast.success('获取验证码成功', 1)
             //开启倒计时
-            setTime(6)
+            setTime(60)
             let timeId = setInterval(() => {
                 setTime((time) => {
                     if(time === 1) {
@@ -45,9 +45,11 @@ const Login = () => {
             code: '246810'
         },
         //当表单提交的时候会触发
-        onSubmit: (values) => {
-            console.log(values)
+        async onSubmit(values) {
+            await dispatch(login(values))
+            Toast.success('登录成功')
         },
+
         // validate(values) {
         //     const errors = {}
         //     if (!values.mobile) {

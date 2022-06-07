@@ -1,3 +1,4 @@
+import { Toast } from 'antd-mobile'
 import axios from 'axios'
 
 const instance = axios.create({
@@ -22,6 +23,11 @@ instance.interceptors.response.use(
         return response.data
     },
     err => {
+        if (err.response) {
+            Toast.info(err.response.data.message)
+        } else {
+            Toast.info('网络繁忙，请稍后重试')
+        }
         return Promise.reject(err)
     }
 )
