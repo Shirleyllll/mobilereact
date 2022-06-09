@@ -8,7 +8,9 @@ import { useDispatch } from 'react-redux';
 import { login, sendCode } from '@/store/actions/login';
 import { Toast } from 'antd-mobile';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 const Login = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const [time, setTime] = useState(0)
     const onExtraClick = async () => {
@@ -48,6 +50,8 @@ const Login = () => {
         async onSubmit(values) {
             await dispatch(login(values))
             Toast.success('登录成功')
+            //跳转到首页
+            history.push('/home')
         },
 
         // validate(values) {

@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-
+import { setTokenInfo } from '@/utils/storage'
 export const sendCode = (mobile) => {
     return async () => {
         await request({
@@ -21,6 +21,16 @@ export const login = (data) => {
             url: '/authorizations',
             data
         })
-        console.log(res)
+        //保存token到redux中
+        dispatch(saveToken(res.data))
+        //保存到本地
+        setTokenInfo(res.data)
+    }
+}
+
+export const saveToken = (payload) => {
+    return {
+        type: 'login/token',
+        payload
     }
 }
