@@ -3,7 +3,7 @@ import React, { Suspense } from 'react'
 import './App.scss'
 
 const Login = React.lazy(() => import('@/pages/Login'))
-const Home = React.lazy(() => import('@/pages/Home'))
+const Home = React.lazy(() => import('@/pages/Layout'))
 const App = () => {
     return (
         <Router>
