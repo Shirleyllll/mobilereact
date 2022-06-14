@@ -3,6 +3,9 @@
 .root {
   height: 100%;
   :global {
+    .icon {
+      font-size: 10px;
+    }
     .tabbar {
       position: fixed;
       z-index: 1;
